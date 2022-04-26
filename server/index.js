@@ -19,15 +19,3 @@ db.on('error', (error) => console.log(error))
 db.once('open',() => console.log('database connected'))
 app.use(express.json())
 app.use(productRouter)
-const Storage = multer.diskStorage({
-  destination: "./Uploads",
-  filename: (req, file, cb) => {
-    cb(null, file.originalname);
-  },
-});
-
-const upload = multer({
-  storage: Storage,
-}).single("image");
-
-module.exports = upload
